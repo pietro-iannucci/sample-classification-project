@@ -80,6 +80,13 @@ def evaluate_model(test_dataset_path, model_path, accuracy_path):
     print(f"Accuracy written to path file location: {accuracy_path}")
     return accuracy
 
+# ==========================================
+# 4. SAVE THE MODEL IN MODEL REGISTRY
+# ==========================================
+def save_model(trained_model_path, model_registry_path): 
+    print(f"Executing: save_model -> Registry path: {model_registry_path}") 
+    # Put your code here !!!!     
+    print(f"Model saved to model registry: {model_registry_path}") 
 
 # ====================================================================
 # COMMAND LINE ROUTING INTERFACE
@@ -109,6 +116,12 @@ if __name__ == "__main__":
             print("Usage: python pipeline_tasks.py evaluate <test_dataset_path> <model_path> <accuracy_path>")
             sys.exit(1)
         evaluate_model(sys.argv[2], sys.argv[3], sys.argv[4])
+
+    elif action == "save":
+        if len(sys.argv) < 4:
+            print("Usage: python pipeline_tasks.py save <trained_model_path> <model_registry_path>")
+            sys.exit(1)
+        save_model(sys.argv[2], sys.argv[3])
 
     else:
         print(f"Unknown action: '{action}'. Choose from: 'prepare', 'train', or 'evaluate'.")
